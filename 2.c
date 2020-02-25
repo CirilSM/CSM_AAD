@@ -25,7 +25,8 @@ void bubble(int a[],int n)
 	printf("\n%f",m1);
 	fp1=fopen("bubble.dat","a");
 	fprintf(fp1,"%d\t",n);
-	fprintf(fp1,"%f\t",m1);
+	fprintf(fp1,"%f\t\n",m1);
+	fclose(fp1);
 }
 void selec(int a[],int n)
 {
@@ -47,7 +48,8 @@ void selec(int a[],int n)
 	printf("\n%f",m2);
 	fp2=fopen("selection.dat","a");
 	fprintf(fp2,"%d\t",n);
-	fprintf(fp2,"%f\t",m2);
+	fprintf(fp2,"%f\t\n",m2);
+	fclose(fp2);
 }
 
 void insertion(int a[],int n)
@@ -78,7 +80,8 @@ void insertion(int a[],int n)
 	printf("\n%f",m3);
 	fp3=fopen("insertion.dat","a");
 	fprintf(fp3,"%d\t",n);
-	fprintf(fp3,"%f\t",m3);
+	fprintf(fp3,"%f\t\n",m3);
+	fclose(fp3);
 
 }
 void quick(int list[], int low, int high)
@@ -136,12 +139,15 @@ void linear(int ar[],int n)
 	}
 	if(flag==0)
 		printf("Search not found");
+	for(int i=0;i<10;i++)
+	{}
 	t10=clock();
 	m5=((t10-t9)/(double) CLOCKS_PER_SEC);
 	printf("\n%f",m5);
 	fp5=fopen("linear.dat","a");
 	fprintf(fp5,"%d\t",n);
-	fprintf(fp5,"%f\t",m5);	
+	fprintf(fp5,"%f\t\n",m5);	
+	fclose(fp5);
 }
 void binary(int arr[],int n)
 {
@@ -170,58 +176,76 @@ void binary(int arr[],int n)
 		printf("SEARCH NOT FOUND");
 	m6=((t12-t11)/(double) CLOCKS_PER_SEC);
 	printf("\n%f",m6);
-	fp6=fopen("bubble.dat","a");
+	fp6=fopen("binary.dat","a");
 	fprintf(fp6,"%d\t",n);
-	fprintf(fp6,"%f\t",m1);
+	fprintf(fp6,"%f\t\n",m1);
+	fclose(fp6);
 	
 }	
 			
 void main()
 {
 	int a[100],n,ch;
-	printf("Enter the size:");
-	scanf("%d",&n);
 	while(1)
 	{
 		printf("1.Bubble\n2.Select\n3.Insertion\n4.Quick\n5.Linear Search\n6.Binary Search\nEnter the choice:");
 		scanf("%d",&ch);
 		switch(ch)
 		{
-			case 1:	printf("Enter the elements of the array:\n");
+			case 1:
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				for(int i=0;i<n;i++)
-					scanf("%d",&a[i]);
+					a[i]=rand()%1000;
 				bubble(a,n);//working
 				break;
-			case 2:	printf("Enter the elements of the array:\n");
+			case 2:	
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				for(int i=0;i<n;i++)
-					scanf("%d",&a[i]);
+					a[i]=rand()%1000;
 				selec(a,n);//working
 				break;
-			case 3:	printf("Enter the elements of the array:\n");
+			case 3:
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				a[0]=0;
 				for(int i=1;i<n+1;i++)
-					scanf("%d",&a[i]);
+					a[i]=rand()%1000;
 				insertion(a,n);//1st and last element wrong
 				break;
-			case 4:	printf("Enter the elements of the array:\n");
+			case 4:	
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				for(int i=0;i<n;i++)
-					scanf("%d",&a[i]);
+					a[i]=rand()%1000;
 				quick(a,0,n-1);//working
 				m4=((t8-t7)/(double) CLOCKS_PER_SEC);
 				printf("\n%f",m4);
 				fp4=fopen("quick.dat","a");
 				fprintf(fp4,"%d\t",n);
-				fprintf(fp4,"%f\t",m4);
+				fprintf(fp4,"%f\t\n",m4);
+				fclose(fp4);
 				printf("Array after sorting.\n\n");
 				for(int i=0;i<n;i++)
 					printf("%d\n",a[i]);
 				break;
-			case 5:	printf("Enter the elements of the array:\n");
+			case 5:	
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				for(int i=0;i<n;i++)
 					scanf("%d",&a[i]);
 				linear(a,n);
 				break;
-			case 6:	printf("Enter the elements of the array:\n");
+			case 6:	
+				printf("Enter the size:");
+				scanf("%d",&n);
+				printf("Enter the elements of the array:\n");
 				for(int i=0;i<n;i++)
 					scanf("%d",&a[i]);
 				binary(a,n);
